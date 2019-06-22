@@ -1,0 +1,47 @@
+<jxb:bindings 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+    version="2.1">
+
+    <jxb:bindings schemaLocation="fhir-xhtml.xsd">
+	    <jxb:bindings node="//xs:attributeGroup[@name='i18n']/xs:attribute[@ref='xml:lang']">
+		    <jxb:property name="xmlLang"/>
+	    </jxb:bindings>
+	    <jxb:bindings node="//xs:element[@name='bdo']/xs:complexType/xs:complexContent/xs:extension/xs:attribute[@ref='xml:lang']">
+		    <jxb:property name="xmlLang"/>
+	    </jxb:bindings>
+    </jxb:bindings>
+    <!--
+    Fixes:-
+
+    com.sun.istack.SAXParseException2; systemId: file:../xsd/fhir-xhtml.xsd;
+    lineNumber: 283; columnNumber: 52; Property "Lang" is already defined. Use
+    <jaxb:property> to resolve this conflict.
+    -->
+    <!--
+    <jxb:bindings node="//xs:attributeGroup[@name='i18n']">
+      <jxb:bindings node=".//xs:attribute[@name='lang']">
+        <jxb:property name="xml:lang"/>
+      </jxb:bindings>
+    </jxb:bindings>
+    -->
+    <!--
+    Fixes:-
+
+    com.sun.istack.SAXParseException2; systemId: file:../xsd/fhir-xhtml.xsd;
+    lineNumber: 1106; columnNumber: 58; Property "Lang" is already defined. Use
+    <jaxb:property> to resolve this conflict.
+    -->
+    <!--
+    <jxb:bindings node="//xs:element[@name='bdo']">
+	    <jxb:bindings node=".//xs:attribute[@name='lang']">
+		    <jxb:property name="xml:lang"/>
+	    </jxb:bindings>
+    </jxb:bindings>
+    -->
+   <!-- Raise theEnumMemberSizeCap limit -->
+   <jxb:bindings>
+	   <jxb:globalBindings typesafeEnumMaxMembers="500"/>
+   </jxb:bindings>
+
+</jxb:bindings>
